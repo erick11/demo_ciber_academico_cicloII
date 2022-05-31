@@ -1,20 +1,13 @@
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JApplet;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JToolBar;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+
 import arreglos.*;
 import clases.Categoria;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import utileria.Fecha;
 
-public class Principal extends JApplet implements ActionListener {
+public class Principal extends JPanel implements ActionListener {
 
     //Atributos
     JButton btnMantenimiento;
@@ -78,8 +71,7 @@ public class Principal extends JApplet implements ActionListener {
         pnlVentas = new PnlVentas(this);
         add(pnlVentas);
 
-        pnlIngresoSistema = new PnlIngresoSistema(this);
-        add(pnlIngresoSistema);
+        pnlIngresoSistema = new PnlIngresoSistema(this);        add(pnlIngresoSistema);
 
         btnMantenimiento = new JButton("Mantenimiento");
         btnMantenimiento.setEnabled(false);
@@ -191,4 +183,16 @@ public class Principal extends JApplet implements ActionListener {
         }
     }
 
+    public static void main(String[] args) {
+
+        Principal p = new Principal();
+        p.setSize(900,700);
+        p.setVisible(true);
+
+        JWindow w = new JWindow();
+        w.setSize(900,700);
+        w.setVisible(true);
+        w.add(p);
+
+    }
 }
