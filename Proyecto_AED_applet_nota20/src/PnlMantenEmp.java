@@ -25,7 +25,7 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
     private JTextField txtApellidos;
     private JTextField txtTelefono;
     private JTextField txtFecIng;
-    private JTextField txtContraseña;
+    private JTextField txtContrasena;
     JComboBox cboTienda;
     private JComboBox cboTipo;
     private JTable tblEmpleados;
@@ -41,7 +41,7 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
 
         pri = p;
 
-	JLabel lblCodigo = new JLabel("Código",SwingConstants.LEFT);
+	JLabel lblCodigo = new JLabel("Cï¿½digo",SwingConstants.LEFT);
 	lblCodigo.setBounds(40,20,90,20);
 	add(lblCodigo);
 
@@ -66,7 +66,7 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
 	txtApellidos.setBounds(140,80,200,20);
 	add(txtApellidos);
 
-	JLabel lblTelefono = new JLabel("Teléfono",SwingConstants.LEFT);
+	JLabel lblTelefono = new JLabel("Telï¿½fono",SwingConstants.LEFT);
 	lblTelefono.setBounds(40,110,90,20);
 	add(lblTelefono);
 
@@ -102,19 +102,19 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
 	cboTipo.addItem("Vendedor");
 	add(cboTipo);
 
-        JLabel lblContraseña = new JLabel("Contraseña",SwingConstants.LEFT);
-        lblContraseña.setBounds(360,80,70,20);
-        add(lblContraseña);
+        JLabel lblContrasena = new JLabel("Contrasena",SwingConstants.LEFT);
+        lblContrasena.setBounds(360,80,70,20);
+        add(lblContrasena);
 
-        txtContraseña = new JTextField();
-        txtContraseña.setBounds(440,80,110,20);
-        add(txtContraseña);
+        txtContrasena = new JTextField();
+        txtContrasena.setBounds(440,80,110,20);
+        add(txtContrasena);
 
 	datos = new DefaultTableModel();
-	datos.addColumn("Código");
+	datos.addColumn("Cï¿½digo");
 	datos.addColumn("Nombres");
 	datos.addColumn("Apellidos");
-	datos.addColumn("Teléfono");
+	datos.addColumn("Telï¿½fono");
 	datos.addColumn("Fec. ingreso");
 	datos.addColumn("Tienda");
 	datos.addColumn("Tipo");
@@ -125,7 +125,7 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
 	scpScroll1.setBounds(40,190,720,150);
 	add(scpScroll1);
 
-	JLabel lblOperacion = new JLabel("Operación",SwingConstants.LEFT);
+	JLabel lblOperacion = new JLabel("Operaciï¿½n",SwingConstants.LEFT);
 	lblOperacion.setBounds(570,20,80,20);
 	add(lblOperacion);
 
@@ -154,7 +154,7 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
     public void actionPerformed(ActionEvent e) {
 
         switch(cboOperacion.getSelectedIndex()) {
-            case 0: JOptionPane.showMessageDialog(this,"¡Seleccione una operación!");
+            case 0: JOptionPane.showMessageDialog(this,"ï¿½Seleccione una operaciï¿½n!");
                     break;
             case 1: registrar();
                     break;
@@ -178,7 +178,7 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
         txtFecIng.setText("");
         cboTienda.setSelectedIndex(0);
         cboTipo.setSelectedIndex(0);
-        txtContraseña.setText("");
+        txtContrasena.setText("");
 
         switch(cboOperacion.getSelectedIndex()) {
             case 0: break;
@@ -203,10 +203,10 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
         String fecing = txtFecIng.getText();
         int tiend = Integer.parseInt(cboTienda.getSelectedItem().toString());
         int tip = cboTipo.getSelectedIndex()-1;
-        String pass = txtContraseña.getText();
+        String pass = txtContrasena.getText();
 
         pri.aemp.ingresar(new Empleado(cod,nom,ape,tel,fecing,tiend,tip,pass));
-        JOptionPane.showMessageDialog(this,"¡Ingreso realizado!");
+        JOptionPane.showMessageDialog(this,"ï¿½Ingreso realizado!");
         listar();
         cboOperacion.setSelectedIndex(0);
         pri.aemp.guardar();
@@ -221,20 +221,20 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
 
         if(e != null) {
             txtS.setText("********* RESULTADO DE LA CONSULLTA **********\n\n");
-            txtS.append(" Código: "+e.getCodigo()+"\n");
+            txtS.append(" Cï¿½digo: "+e.getCodigo()+"\n");
             txtS.append(" Nombres: "+e.getNombres()+"\n");
             txtS.append(" Apellidos: "+e.getApellidos()+"\n");
-            txtS.append(" Teléfono: "+e.getTelefono()+"\n");
+            txtS.append(" Telï¿½fono: "+e.getTelefono()+"\n");
             txtS.append(" Fecha Ingreso: "+e.getFechaing()+"\n");
             txtS.append(" Tienda: "+e.getTienda()+"\n");
             txtS.append(" Tipo: "+e.getTipo()+"\n");
-            txtS.append(" Contraseña: "+e.getContraseña());
+            txtS.append(" Contrasena: "+e.getContrasena());
 
-            JOptionPane.showMessageDialog(this,"¡Consulta realizada!");
+            JOptionPane.showMessageDialog(this,"ï¿½Consulta realizada!");
             cboOperacion.setSelectedIndex(0);
 
         } else
-            JOptionPane.showMessageDialog(this,"El código no existe");
+            JOptionPane.showMessageDialog(this,"El cï¿½digo no existe");
 
     }
 
@@ -251,7 +251,7 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
             String fecing = txtFecIng.getText();
             int tiend = Integer.parseInt(cboTienda.getSelectedItem().toString());
             int tip = cboTipo.getSelectedIndex()-1;
-            String pass = txtContraseña.getText();
+            String pass = txtContrasena.getText();
 
             e.setNombres(nom);
             e.setApellidos(ape);
@@ -259,15 +259,15 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
             e.setFechaing(fecing);
             e.setTienda(tiend);
             e.setTipo(tip);
-            e.setContraseña(pass);
+            e.setContrasena(pass);
 
-            JOptionPane.showMessageDialog(this,"¡Modificación realizada!");
+            JOptionPane.showMessageDialog(this,"ï¿½Modificaciï¿½n realizada!");
             listar();
             cboOperacion.setSelectedIndex(0);
             pri.aemp.guardar();
 
         } else
-            JOptionPane.showMessageDialog(this,"¡El código no existe!");
+            JOptionPane.showMessageDialog(this,"ï¿½El cï¿½digo no existe!");
 
     }
 
@@ -277,11 +277,11 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
         int pos = -1;
         int cod = Integer.parseInt(txtCodigo.getText());
 
-        for(int i=0;i<pri.aemp.tamaño();i++) {
+        for(int i=0;i<pri.aemp.tamano();i++) {
             Empleado e = pri.aemp.obtener(i);
             if(e.getCodigo() == cod) {
                 pri.aemp.eliminar(i);
-                JOptionPane.showMessageDialog(this,"¡Eliminación realizada!");
+                JOptionPane.showMessageDialog(this,"ï¿½Eliminaciï¿½n realizada!");
                 listar();
                 pos = i;
                 cboOperacion.setSelectedIndex(0);
@@ -293,7 +293,7 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
         }
 
 	if(pos == -1)
-            JOptionPane.showMessageDialog(this,"¡El código no existe!");
+            JOptionPane.showMessageDialog(this,"ï¿½El cï¿½digo no existe!");
 
 
     }
@@ -304,7 +304,7 @@ public class PnlMantenEmp extends JPanel implements  ActionListener,
 	while(datos.getRowCount() > 0)
             datos.removeRow(0);
 
-        for(int i=0;i<pri.aemp.tamaño();i++) {
+        for(int i=0;i<pri.aemp.tamano();i++) {
             Object fila[] = new Object[7];
             Empleado e = pri.aemp.obtener(i);
 

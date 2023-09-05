@@ -21,13 +21,13 @@ public class ArregloTienda {
 
     }
 
-    //Método
+    //Mï¿½todo
     public void ingresar(Tienda t) {
         atien.add(t);
 
     }
 
-    public int tamaño() {
+    public int tamano() {
         return atien.size();
 
     }
@@ -47,17 +47,17 @@ public class ArregloTienda {
     }
 
     public String getCodigoAutogenerado() {
-        if(tamaño() == 0)
+        if(tamano() == 0)
             return "10001";
         else
-            return ""+(obtener(tamaño()-1).getCodigo()+1);
+            return ""+(obtener(tamano()-1).getCodigo()+1);
     }
 
     public void guardar() {
         try {
             PrintWriter pw = new PrintWriter(new FileWriter("Archivos/Tiendas.txt"));
 
-            for(int i=0;i<tamaño();i++) {
+            for(int i=0;i<tamano();i++) {
                 Tienda t = obtener(i);
                 pw.println(t.getCodigo()+","+t.getDescripcion()+","+
                            t.getCapacidad()+","+t.getOcupado());
@@ -97,7 +97,7 @@ public class ArregloTienda {
                 br.close();
 
             } else
-                JOptionPane.showMessageDialog(null,"¡El archivo no existe!");
+                JOptionPane.showMessageDialog(null,"ï¿½El archivo no existe!");
 
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null,"Error: "+e);

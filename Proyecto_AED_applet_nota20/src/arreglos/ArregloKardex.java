@@ -21,7 +21,7 @@ public class ArregloKardex {
 
     }
 
-    //Métodos
+    //Mï¿½todos
     public void ingresar(Kardex k) {
         akard.add(k);
     }
@@ -31,16 +31,16 @@ public class ArregloKardex {
 
     }
 
-    public int tamaño() {
+    public int tamano() {
         return akard.size();
 
     }
 
     public String getCodigoAutogenerado() {
-        if(tamaño() == 0)
+        if(tamano() == 0)
             return ""+10001;
         else
-            return ""+(obtener(tamaño()-1).getNumero()+1);
+            return ""+(obtener(tamano()-1).getNumero()+1);
 
     }
 
@@ -49,7 +49,7 @@ public class ArregloKardex {
         try {
             PrintWriter pw = new PrintWriter(new FileWriter("Archivos/Kardex.txt"));
 
-            for(int i=0;i<tamaño();i++) {
+            for(int i=0;i<tamano();i++) {
                 Kardex k = obtener(i);
                 pw.println(k.getNumero()+","+k.getTipoperacion()+","+
                            k.getOperacion()+","+k.getFecha()+","+k.getEmpleado()+","+
@@ -99,7 +99,7 @@ public class ArregloKardex {
                 br.close();
 
             } else
-                JOptionPane.showMessageDialog(null,"¡El archivo no existe!");
+                JOptionPane.showMessageDialog(null,"ï¿½El archivo no existe!");
 
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null,"Error: "+e);

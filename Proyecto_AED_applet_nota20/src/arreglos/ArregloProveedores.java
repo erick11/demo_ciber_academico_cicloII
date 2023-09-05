@@ -21,7 +21,7 @@ public class ArregloProveedores {
 
     }
 
-    //Métodos
+    //Mï¿½todos
     public void ingresar(Proveedor p) {
         aprov.add(p);
 
@@ -37,7 +37,7 @@ public class ArregloProveedores {
 
     }
 
-    public int tamaño() {
+    public int tamano() {
 	return aprov.size();
 
     }
@@ -51,17 +51,17 @@ public class ArregloProveedores {
     }
 
     public String getCodigoAutogenerado() {
-        if(tamaño() == 0)
+        if(tamano() == 0)
             return ""+10001;
         else
-            return ""+(obtener(tamaño()-1).getCodigo()+1);
+            return ""+(obtener(tamano()-1).getCodigo()+1);
     }
 
     public void guardar() {
         try {
             PrintWriter pw = new PrintWriter(new FileWriter("Archivos/Proveedores.txt"));
 
-            for(int i=0;i<tamaño();i++) {
+            for(int i=0;i<tamano();i++) {
                 Proveedor p = obtener(i);
                 pw.println(p.getCodigo()+","+p.getNombre()+","+
                 p.getRuc()+","+p.getTelefono()+","+p.getEmail());
@@ -102,7 +102,7 @@ public class ArregloProveedores {
                 br.close();
 
             } else
-                JOptionPane.showMessageDialog(null,"¡El archivo no existe!");
+                JOptionPane.showMessageDialog(null,"ï¿½El archivo no existe!");
 
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null,"Error: "+e);

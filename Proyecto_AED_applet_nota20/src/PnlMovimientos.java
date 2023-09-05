@@ -57,9 +57,9 @@ public class PnlMovimientos extends JPanel implements ActionListener,
         pri = p;
 
         datos = new DefaultTableModel();
-        datos.addColumn("Código Almacén");
+        datos.addColumn("Cï¿½digo Almacï¿½n");
         datos.addColumn("Proveedor");
-        datos.addColumn("Código Producto");
+        datos.addColumn("Cï¿½digo Producto");
         datos.addColumn("Stock");
 
         tblProductos = new JTable(datos);
@@ -68,7 +68,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
         scpScroll1.setBounds(30,30,740,200);
         add(scpScroll1);
 
-        JLabel lblNumero = new JLabel("Número",SwingConstants.LEFT);
+        JLabel lblNumero = new JLabel("Nï¿½mero",SwingConstants.LEFT);
         lblNumero.setBounds(50,270,80,20);
         add(lblNumero);
 
@@ -81,7 +81,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
         lblTipoDoc.setBounds(50,320,110,20);
         add(lblTipoDoc);
 
-        String tipodoc[] = {"Seleccione","Boleta","Factura","Guía de remisión",
+        String tipodoc[] = {"Seleccione","Boleta","Factura","Guï¿½a de remisiï¿½n",
                            "Orden de compra"};
 
         cboTipoDoc = new JComboBox(tipodoc);
@@ -115,7 +115,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
         cboTienProv.addItem("Seleccione");
         add(cboTienProv);
 
-        JLabel lblCategoria = new JLabel("Categoría de producto",SwingConstants.LEFT);
+        JLabel lblCategoria = new JLabel("Categorï¿½a de producto",SwingConstants.LEFT);
         lblCategoria.setBounds(220,270,130,20);
         add(lblCategoria);
 
@@ -145,7 +145,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
         txtCantidad.setBounds(220,490,100,20);
         add(txtCantidad);
 
-        JLabel lblTransaccion = new JLabel("Transacción",SwingConstants.LEFT);
+        JLabel lblTransaccion = new JLabel("Transacciï¿½n",SwingConstants.LEFT);
         lblTransaccion.setBounds(550,270,90,20);
         add(lblTransaccion);
 
@@ -175,7 +175,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
     public void actionPerformed(ActionEvent e) {
 
         switch(cboTransaccion.getSelectedIndex()) {
-            case 0: JOptionPane.showMessageDialog(this,"¡Seleccione una operación!");
+            case 0: JOptionPane.showMessageDialog(this,"ï¿½Seleccione una operaciï¿½n!");
                     break;
             case 1: registrar();
                     break;
@@ -224,7 +224,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
 
         int cat = Integer.parseInt(cboCategoria.getSelectedItem().toString());
 
-        for(int i=0;i<pri.aprod.tamaño();i++) {
+        for(int i=0;i<pri.aprod.tamano();i++) {
             Producto p = pri.aprod.obtener(i);
             if(p.getCategoria() == cat)
                 items.addElement(p.getCodigo());
@@ -235,7 +235,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
 
     private void cargarProveedores() {
 
-        for(int i=0;i<pri.aprov.tamaño();i++) {
+        for(int i=0;i<pri.aprov.tamano();i++) {
             Proveedor p = pri.aprov.obtener(i);
             cboTienProv.addItem(p.getCodigo());
         }
@@ -244,7 +244,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
 
     private void cargarTiendas() {
 
-        for(int i=0;i<pri.atien.tamaño();i++) {
+        for(int i=0;i<pri.atien.tamano();i++) {
            Tienda t = pri.atien.obtener(i);
            cboTienProv.addItem(t.getCodigo());
 
@@ -281,7 +281,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
         pri.aproal.guardar();
 
         //muestra mensaje de registro
-        JOptionPane.showMessageDialog(this,"¡Registro realizado!");
+        JOptionPane.showMessageDialog(this,"ï¿½Registro realizado!");
 
         //Lista todos los productos del almacen en la tabla
         listar();
@@ -294,7 +294,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
        //Lectura de datos desde la interfaz grafica
        int prod = Integer.parseInt(lstProductos.getSelectedValue().toString());
        int cantreq = Integer.parseInt(txtCantidad.getText());
-       //Cantidad disponible del producto en el almacén
+       //Cantidad disponible del producto en el almacï¿½n
        int cantdisp = pri.aproal.cantidadProducto(prod);
 
        //Si la cantidad disponible satisface la cantidad requerida
@@ -324,11 +324,11 @@ public class PnlMovimientos extends JPanel implements ActionListener,
                //Genera el documento Kardex
                generarKardex(2,tiend,prod,cantreq);
 
-               //Actualiza la cantidad de prendas en el almacén
+               //Actualiza la cantidad de prendas en el almacï¿½n
                t.setOcupado(t.getOcupado() + cantreq);
 
                //Se disminuye el stock del producto en el almacen
-               for(int i=0;i<pri.aproal.tamaño();i++) {
+               for(int i=0;i<pri.aproal.tamaÃ±o();i++) {
                    ProductoAlmacen pa = pri.aproal.buscar2(prod);
                    if(cantreq != 0)
                        if(pa.getStock() >= cantreq){
@@ -356,16 +356,16 @@ public class PnlMovimientos extends JPanel implements ActionListener,
                listar();
 
                //Muestra mensaje de distrubucion
-               JOptionPane.showMessageDialog(this,"¡Distribución realizada!");
+               JOptionPane.showMessageDialog(this,"ï¿½Distribuciï¿½n realizada!");
 
            //Si es que no se puede almacenar la cantidad requerida en la tienda
            } else
 
                switch(capacdisp) {
-                   case 0: JOptionPane.showMessageDialog(this,"¡Ya no se pueden "+
-                                        "ingresar más prendas en esta tienda!");
+                   case 0: JOptionPane.showMessageDialog(this,"ï¿½Ya no se pueden "+
+                                        "ingresar mï¿½s prendas en esta tienda!");
                            break;
-                   default: JOptionPane.showMessageDialog(this,"¡Solo se pueden "+
+                   default: JOptionPane.showMessageDialog(this,"ï¿½Solo se pueden "+
                                   "ingresar "+capacdisp+" prendas en la tienda!");
 
                }
@@ -374,11 +374,11 @@ public class PnlMovimientos extends JPanel implements ActionListener,
        } else
 
            switch(cantdisp) {
-               case 0: JOptionPane.showMessageDialog(this,"¡No hay este tipo "+
-                                "de prenda en el almacén!");
+               case 0: JOptionPane.showMessageDialog(this,"ï¿½No hay este tipo "+
+                                "de prenda en el almacï¿½n!");
                        break;
-               default: JOptionPane.showMessageDialog(this,"¡Solo existen "+cantdisp+
-                                        " prendas de este tipo en el almacén!");
+               default: JOptionPane.showMessageDialog(this,"ï¿½Solo existen "+cantdisp+
+                                        " prendas de este tipo en el almacï¿½n!");
 
            }
 
@@ -451,7 +451,7 @@ public class PnlMovimientos extends JPanel implements ActionListener,
         while(datos.getRowCount() > 0)
             datos.removeRow(0);
 
-        for(int i=0;i<pri.aproal.tamaño();i++) {
+        for(int i=0;i<pri.aproal.tamaÃ±o();i++) {
             ProductoAlmacen pa = pri.aproal.obtener(i);
             Object fila[] = new Object[4];
 

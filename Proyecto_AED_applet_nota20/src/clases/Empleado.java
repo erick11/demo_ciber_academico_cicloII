@@ -10,11 +10,11 @@ public class Empleado {
     private String fechaing;
     private int tienda;
     private int tipo;
-    private String contraseña;
+    private String contrasena;
 
     //Contructor
     public Empleado(int codigo, String nombres, String apellidos, String telefono,
-                    String fechaing, int tienda, int tipo,String contraseña) {
+                    String fechaing, int tienda, int tipo,String contrasena) {
         this.codigo = codigo;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -22,7 +22,7 @@ public class Empleado {
         this.fechaing = fechaing;
         this.tienda = tienda;
         this.tipo = tipo;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
 
     }
 
@@ -79,12 +79,12 @@ public class Empleado {
         this.tipo = tipo;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
 }

@@ -21,7 +21,7 @@ public class ArregloProdAlma {
 
     }
 
-    //Métodos
+    //Mï¿½todos
     public void ingresar(ProductoAlmacen pa) {
         aproal.add(pa);
 
@@ -32,7 +32,7 @@ public class ArregloProdAlma {
         
     }
 
-    public int tamaño() {
+    public int tamaÃ±o() {
         return aproal.size();
 
     }
@@ -73,7 +73,7 @@ public class ArregloProdAlma {
         try {
             PrintWriter pw = new PrintWriter(new FileWriter("Archivos/ProductoAlmacen.txt"));
 
-            for(int i=0;i<tamaño();i++) {
+            for(int i=0;i<tamaÃ±o();i++) {
                 ProductoAlmacen pa = obtener(i);
                 pw.println(pa.getAlmacen()+","+pa.getProveedor()+","+
                            pa.getProducto()+","+pa.getStock());
@@ -112,7 +112,7 @@ public class ArregloProdAlma {
                 br.close();
 
             } else
-                JOptionPane.showMessageDialog(null,"¡El archivo no existe!");
+                JOptionPane.showMessageDialog(null,"ï¿½El archivo no existe!");
 
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null,"Error: "+e);
