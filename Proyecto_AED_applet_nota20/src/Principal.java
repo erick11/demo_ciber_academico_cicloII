@@ -156,7 +156,7 @@ public class Principal extends JApplet implements ActionListener {
         x.removeAllItems();
         x.addItem("Seleccione");
         
-        for(int i=0;i<acat.tamaño();i++) {
+        for(int i=0;i<acat.tamano();i++) {
             Categoria c = acat.obtener(i);
             x.addItem(c.getCodigo());
 
@@ -174,12 +174,12 @@ public class Principal extends JApplet implements ActionListener {
 
     private void logOut() {
 
-        int aceptacion = JOptionPane.showConfirmDialog(this,"¿Desea cerrar su sesión?",
-                "Cerrar sesión",JOptionPane.YES_NO_OPTION);
+        int aceptacion = JOptionPane.showConfirmDialog(this,"ï¿½Desea cerrar su sesiï¿½n?",
+                "Cerrar sesiï¿½n",JOptionPane.YES_NO_OPTION);
 
         if(aceptacion == 0) {
             pnlIngresoSistema.txtUsuario.setText("");
-            pnlIngresoSistema.pwfContraseña.setText("");
+            pnlIngresoSistema.pwfContrasena.setText("");
             tbrHerramientas.setVisible(false);
             btnMantenimiento.setEnabled(false);
             btnMovimientos.setEnabled(false);

@@ -14,7 +14,7 @@ public class PnlMantenimiento extends JPanel implements ChangeListener {
     private PnlMantenEmp pnlMantenEmp;
     private PnlMantenProv pnlMantenProv;
     private PnlMantenTiendas pnlMantenTiendas;
-    private JTabbedPane tbpPestañas;
+    private JTabbedPane tbpPestanas;
     private Principal pri;
 
     //Constructor
@@ -39,15 +39,15 @@ public class PnlMantenimiento extends JPanel implements ChangeListener {
         pnlMantenTiendas = new PnlMantenTiendas(p);
         pnlMantenTiendas.listar();
 
-	tbpPestañas = new JTabbedPane();
-	tbpPestañas.setBounds(0,0,800,550);
-        tbpPestañas.addTab("Categorías",pnlMantenCat);
-	tbpPestañas.addTab("Productos",pnlMantenProd);
-	tbpPestañas.addTab("Empleados",pnlMantenEmp);
-	tbpPestañas.addTab("Proveedores",pnlMantenProv);
-        tbpPestañas.addTab("Tiendas",pnlMantenTiendas);
-        tbpPestañas.addChangeListener(this);
-	add(tbpPestañas);
+	tbpPestanas = new JTabbedPane();
+	tbpPestanas.setBounds(0,0,800,550);
+        tbpPestanas.addTab("Categorï¿½as",pnlMantenCat);
+	tbpPestanas.addTab("Productos",pnlMantenProd);
+	tbpPestanas.addTab("Empleados",pnlMantenEmp);
+	tbpPestanas.addTab("Proveedores",pnlMantenProv);
+        tbpPestanas.addTab("Tiendas",pnlMantenTiendas);
+        tbpPestanas.addChangeListener(this);
+	add(tbpPestanas);
 
 	setVisible(false);
 
@@ -55,7 +55,7 @@ public class PnlMantenimiento extends JPanel implements ChangeListener {
 
     public void stateChanged(ChangeEvent e) {
 
-        switch(tbpPestañas.getSelectedIndex()) {
+        switch(tbpPestanas.getSelectedIndex()) {
             case 1: cargarCategorias();
                     break;
             case 2: cargarTiendas();
@@ -68,7 +68,7 @@ public class PnlMantenimiento extends JPanel implements ChangeListener {
         pnlMantenProd.cboCategoria.removeAllItems();
         pnlMantenProd.cboCategoria.addItem("Seleccione");
 
-        for(int i=0;i<pri.acat.tamaño();i++){
+        for(int i=0;i<pri.acat.tamano();i++){
             Categoria c = pri.acat.obtener(i);
             pnlMantenProd.cboCategoria.addItem(c.getCodigo());
 
@@ -81,7 +81,7 @@ public class PnlMantenimiento extends JPanel implements ChangeListener {
         pnlMantenEmp.cboTienda.removeAllItems();
         pnlMantenEmp.cboTienda.addItem("Seleccione");
 
-        for(int i=0;i<pri.atien.tamaño();i++) {
+        for(int i=0;i<pri.atien.tamano();i++) {
             Tienda t = pri.atien.obtener(i);
             pnlMantenEmp.cboTienda.addItem(t.getCodigo());
             

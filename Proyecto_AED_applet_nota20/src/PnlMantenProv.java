@@ -38,7 +38,7 @@ public class PnlMantenProv extends JPanel implements ActionListener,
 
         pri = p;
 
-	JLabel lblCodigo = new JLabel("Código",SwingConstants.LEFT);
+	JLabel lblCodigo = new JLabel("Cï¿½digo",SwingConstants.LEFT);
 	lblCodigo.setBounds(40,20,90,20);
 	add(lblCodigo);
 
@@ -63,7 +63,7 @@ public class PnlMantenProv extends JPanel implements ActionListener,
 	txtRuc.setBounds(140,80,100,20);
 	add(txtRuc);
 
-	JLabel lblTelefono = new JLabel("Teléfono",SwingConstants.LEFT);
+	JLabel lblTelefono = new JLabel("Telï¿½fono",SwingConstants.LEFT);
 	lblTelefono.setBounds(40,110,90,20);
 	add(lblTelefono);
 
@@ -80,10 +80,10 @@ public class PnlMantenProv extends JPanel implements ActionListener,
 	add(txtEmail);
 
 	datos = new DefaultTableModel();
-	datos.addColumn("Código");
+	datos.addColumn("Cï¿½digo");
 	datos.addColumn("Nombre");
 	datos.addColumn("RUC");
-	datos.addColumn("Teléfono");
+	datos.addColumn("Telï¿½fono");
 	datos.addColumn("Email");
 
 	tblProveedores = new JTable(datos);
@@ -92,7 +92,7 @@ public class PnlMantenProv extends JPanel implements ActionListener,
 	scpScroll1.setBounds(40,190,720,150);
 	add(scpScroll1);
 
-	JLabel lblOperacion = new JLabel("Operación",SwingConstants.LEFT);
+	JLabel lblOperacion = new JLabel("Operaciï¿½n",SwingConstants.LEFT);
 	lblOperacion.setBounds(570,20,80,20);
 	add(lblOperacion);
 
@@ -121,7 +121,7 @@ public class PnlMantenProv extends JPanel implements ActionListener,
     public void actionPerformed(ActionEvent e) {
 
 	switch(cboOperacion.getSelectedIndex()) {
-            case 0: JOptionPane.showMessageDialog(this,"¡Seleccione una operación!");
+            case 0: JOptionPane.showMessageDialog(this,"ï¿½Seleccione una operaciï¿½n!");
 		    break;
             case 1: registrar();
                      break;
@@ -167,7 +167,7 @@ public class PnlMantenProv extends JPanel implements ActionListener,
         String email = txtEmail.getText();
 
         pri.aprov.ingresar(new Proveedor(cod,nom,ruc,tel,email));
-        JOptionPane.showMessageDialog(this,"¡Ingreso realizado!");
+        JOptionPane.showMessageDialog(this,"ï¿½Ingreso realizado!");
         listar();
         cboOperacion.setSelectedIndex(0);
         pri.aprov.guardar();
@@ -182,17 +182,17 @@ public class PnlMantenProv extends JPanel implements ActionListener,
 
         if(p != null) {
             txtS.setText("****** RESULTADO DE LA CONSULTA ******\n\n");
-            txtS.append("Código: "+p.getCodigo()+"\n");
+            txtS.append("Cï¿½digo: "+p.getCodigo()+"\n");
             txtS.append("Nombre: "+p.getNombre()+"\n");
             txtS.append("Ruc: "+p.getRuc()+"\n");
-            txtS.append("Teléfono: "+p.getTelefono()+"\n");
+            txtS.append("Telï¿½fono: "+p.getTelefono()+"\n");
             txtS.append("Email: "+p.getEmail());
 
-            JOptionPane.showMessageDialog(this,"¡Consulta realizada!");
+            JOptionPane.showMessageDialog(this,"ï¿½Consulta realizada!");
             cboOperacion.setSelectedIndex(0);
 
         } else
-            JOptionPane.showMessageDialog(this,"¡El código no existe!");
+            JOptionPane.showMessageDialog(this,"ï¿½El cï¿½digo no existe!");
 
     }
 
@@ -213,13 +213,13 @@ public class PnlMantenProv extends JPanel implements ActionListener,
             p.setTelefono(tel);
             p.setEmail(email);
 
-            JOptionPane.showMessageDialog(this,"Modificación realizada");
+            JOptionPane.showMessageDialog(this,"Modificaciï¿½n realizada");
             listar();
             cboOperacion.setSelectedIndex(0);
             pri.aprov.guardar();
 
         } else
-            JOptionPane.showMessageDialog(this,"El código no existe");
+            JOptionPane.showMessageDialog(this,"El cï¿½digo no existe");
     }
 
     //******************** ELIMINACION DE PROVEEDORES *****************************
@@ -228,11 +228,11 @@ public class PnlMantenProv extends JPanel implements ActionListener,
         int pos = -1;
         int cod = Integer.parseInt(txtCodigo.getText());
 
-        for(int i=0;i<pri.aprov.tamaño();i++) {
+        for(int i=0;i<pri.aprov.tamano();i++) {
             Proveedor p = pri.aprov.obtener(i);
             if(p.getCodigo() == cod) {
                 pri.aprov.eliminar(i);
-                JOptionPane.showMessageDialog(this,"¡Eliminación realizada!");
+                JOptionPane.showMessageDialog(this,"ï¿½Eliminaciï¿½n realizada!");
                 listar();
                 pos = i;
                 cboOperacion.setSelectedIndex(0);
@@ -243,7 +243,7 @@ public class PnlMantenProv extends JPanel implements ActionListener,
         }
 
         if(pos == -1)
-            JOptionPane.showMessageDialog(this,"El código no existe");
+            JOptionPane.showMessageDialog(this,"El cï¿½digo no existe");
 
     }
 
@@ -253,7 +253,7 @@ public class PnlMantenProv extends JPanel implements ActionListener,
 	while(datos.getRowCount() > 0)
             datos.removeRow(0);
 
-        for(int i=0;i<pri.aprov.tamaño();i++) {
+        for(int i=0;i<pri.aprov.tamano();i++) {
             Object fila[] = new Object[5];
             Proveedor p = pri.aprov.obtener(i);
 

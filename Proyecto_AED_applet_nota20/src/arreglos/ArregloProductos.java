@@ -21,7 +21,7 @@ public class ArregloProductos {
 
     }
 
-    //Métodos
+    //Mï¿½todos
     public void ingresar(Producto p) {
         aprod.add(p);
 
@@ -37,7 +37,7 @@ public class ArregloProductos {
 
     }
 
-    public int tamaño() {
+    public int tamano() {
 	return aprod.size();
 
     }
@@ -51,10 +51,10 @@ public class ArregloProductos {
     }
 
     public String getCodigoAutogenerado() {
-        if(tamaño() == 0)
+        if(tamano() == 0)
             return ""+10001;
         else
-            return ""+(obtener(tamaño()-1).getCodigo()+1);
+            return ""+(obtener(tamano()-1).getCodigo()+1);
     }
 
     public double getPrecio(int codigo) {
@@ -71,7 +71,7 @@ public class ArregloProductos {
         try {
             PrintWriter pw = new PrintWriter(new FileWriter("Archivos/Productos.txt"));
 
-            for(int i=0;i<tamaño();i++) {
+            for(int i=0;i<tamano();i++) {
                 Producto p = obtener(i);
                 pw.println(p.getCodigo()+","+p.getDescripcion()+","+
                            p.getCategoria()+","+p.getPrecio()+","+p.getMarca());
@@ -111,7 +111,7 @@ public class ArregloProductos {
                 br.close();
 
             } else
-                JOptionPane.showMessageDialog(null,"¡El archivo no existe!");
+                JOptionPane.showMessageDialog(null,"ï¿½El archivo no existe!");
 
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null,"Error: "+e);

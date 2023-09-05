@@ -33,10 +33,10 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
     private JButton btnRealizar;
     private JComboBox cboDiaInicial;
     private JComboBox cboMesInicial;
-    private JComboBox cboAñoInicial;
+    private JComboBox cboAnoInicial;
     private JComboBox cboDiaFinal;
     private JComboBox cboMesFinal;
-    private JComboBox cboAñoFinal;
+    private JComboBox cboAnoFinal;
     private JTable tblReportes;
     private DefaultTableModel datos;
     private Principal pri;
@@ -52,10 +52,10 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
         lblReporte.setBounds(40,20,80,20);
         add(lblReporte);
 
-        String reportes[] = {"Seleccione","Relación de productos por tienda",
-                             "Relación de ventas realizadas por empleado",
+        String reportes[] = {"Seleccione","Relaciï¿½n de productos por tienda",
+                             "Relaciï¿½n de ventas realizadas por empleado",
                              "Productos vendidos en un rango de fechas",
-                             "Relación de transacciones por tipo de operación"};
+                             "Relaciï¿½n de transacciones por tipo de operaciï¿½n"};
 
         cboReporte = new JComboBox(reportes);
         cboReporte.setBounds(40,50,300,20);
@@ -92,10 +92,10 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
         lblSlash2.setVisible(false);
         add(lblSlash2);
 
-        cboAñoInicial = new JComboBox();
-        cboAñoInicial.setBounds(700,20,60,20);
-        cboAñoInicial.setVisible(false);
-        add(cboAñoInicial);
+        cboAnoInicial = new JComboBox();
+        cboAnoInicial.setBounds(700,20,60,20);
+        cboAnoInicial.setVisible(false);
+        add(cboAnoInicial);
 
         lblFechaFinal = new JLabel("Fecha Final",SwingConstants.LEFT);
         lblFechaFinal.setBounds(500,50,100,20);
@@ -122,14 +122,14 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
         lblSlash4.setVisible(false);
         add(lblSlash4);
 
-        cboAñoFinal = new JComboBox();
-        cboAñoFinal.setBounds(700,50,60,20);
-        cboAñoFinal.setVisible(false);
-        add(cboAñoFinal);
+        cboAnoFinal = new JComboBox();
+        cboAnoFinal.setBounds(700,50,60,20);
+        cboAnoFinal.setVisible(false);
+        add(cboAnoFinal);
 
         cargarDias();
         cargarMeses();
-        cargarAños();
+        cargarAnos();
 
         datos = new DefaultTableModel();
 
@@ -183,11 +183,11 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
 
     }
 
-    private void cargarAños() {
+    private void cargarAnos() {
 
         for(int i=2011;i<=2015;i++){
-            cboAñoInicial.addItem(i);
-            cboAñoFinal.addItem(i);
+            cboAnoInicial.addItem(i);
+            cboAnoFinal.addItem(i);
 
         }
 
@@ -196,7 +196,7 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
     public void actionPerformed(ActionEvent e) {
 
         switch(cboReporte.getSelectedIndex()) {
-            case 0: JOptionPane.showMessageDialog(this,"¡Seleccione un reporte!");
+            case 0: JOptionPane.showMessageDialog(this,"ï¿½Seleccione un reporte!");
                     break;
             case 1: productosTienda();
                     break;
@@ -216,10 +216,10 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
         lblFechaFinal.setVisible(false);
         cboDiaInicial.setVisible(false);
         cboMesInicial.setVisible(false);
-        cboAñoInicial.setVisible(false);
+        cboAnoInicial.setVisible(false);
         cboDiaFinal.setVisible(false);
         cboMesFinal.setVisible(false);
-        cboAñoFinal.setVisible(false);
+        cboAnoFinal.setVisible(false);
         lblSlash1.setVisible(false);
         lblSlash2.setVisible(false);
         lblSlash3.setVisible(false);
@@ -251,18 +251,18 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
                     lblFechaFinal.setVisible(true);
                     cboDiaInicial.setVisible(true);
                     cboMesInicial.setVisible(true);
-                    cboAñoInicial.setVisible(true);
+                    cboAnoInicial.setVisible(true);
                     cboDiaFinal.setVisible(true);
                     cboMesFinal.setVisible(true);
-                    cboAñoFinal.setVisible(true);
+                    cboAnoFinal.setVisible(true);
                     lblSlash1.setVisible(true);
                     lblSlash2.setVisible(true);
                     lblSlash3.setVisible(true);
                     lblSlash4.setVisible(true);
                     break;
-            case 4: datos.addColumn("Tipo Operación");
-                    datos.addColumn("Número");
-                    datos.addColumn("Operación");
+            case 4: datos.addColumn("Tipo Operaciï¿½n");
+                    datos.addColumn("Nï¿½mero");
+                    datos.addColumn("Operaciï¿½n");
                     datos.addColumn("Empleado");
                     datos.addColumn("Fecha");
                     datos.addColumn("Total");
@@ -276,7 +276,7 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
         cboEmpleado.removeAllItems();
         cboEmpleado.addItem("Seleccione");
 
-        for(int i=0;i<pri.aemp.tamaño();i++) {
+        for(int i=0;i<pri.aemp.tamano();i++) {
             Empleado e = pri.aemp.obtener(i);
             cboEmpleado.addItem(e.getCodigo());
 
@@ -286,10 +286,10 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
 
     private void productosTienda() {
 
-        for(int i=0;i<pri.atien.tamaño();i++) {
+        for(int i=0;i<pri.atien.tamano();i++) {
             int tiend = pri.atien.obtener(i).getCodigo();
 
-            for(int j=0;j<pri.aproti.tamaño();j++)
+            for(int j=0;j<pri.aproti.tamano();j++)
                 if(pri.aproti.obtener(j).getTienda() == tiend) {
                     Object fila[] = new Object[3];
 
@@ -304,10 +304,10 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
         }
 
         if(datos.getRowCount() != 0)
-            JOptionPane.showMessageDialog(this,"¡Reporte realizado!");
+            JOptionPane.showMessageDialog(this,"ï¿½Reporte realizado!");
 
         else
-            JOptionPane.showMessageDialog(this,"¡No se han distribuido mercaderias "+
+            JOptionPane.showMessageDialog(this,"ï¿½No se han distribuido mercaderias "+
                             "a las tiendas!");
 
     }
@@ -317,7 +317,7 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
         if(cboEmpleado.getSelectedIndex() != 0) {
             int emp = Integer.parseInt(cboEmpleado.getSelectedItem().toString());
 
-            for(int i=0;i<pri.akard.tamaño();i++)
+            for(int i=0;i<pri.akard.tamano();i++)
                 if(pri.akard.obtener(i).getOperacion() == 3 &&
                         pri.akard.obtener(i).getEmpleado() == emp) {
                     Object fila[] = new Object[5];
@@ -333,14 +333,14 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
                 }
 
             if(datos.getRowCount() != 0)
-                JOptionPane.showMessageDialog(this,"¡Reporte realizado!");
+                JOptionPane.showMessageDialog(this,"ï¿½Reporte realizado!");
 
             else
-                JOptionPane.showMessageDialog(this,"¡El empleado no tiene ventas "+
+                JOptionPane.showMessageDialog(this,"ï¿½El empleado no tiene ventas "+
                                         "registradas!");
 
         } else
-            JOptionPane.showMessageDialog(this,"¡Seleccione un empleado!");
+            JOptionPane.showMessageDialog(this,"ï¿½Seleccione un empleado!");
 
     }
 
@@ -348,10 +348,10 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
 
         if(validaFecha()) {
 
-           for(int i=0;i<pri.acat.tamaño();i++) {
+           for(int i=0;i<pri.acat.tamano();i++) {
                int cat = pri.acat.obtener(i).getCodigo();
 
-               for(int j=0;j<pri.akard.tamaño();j++)
+               for(int j=0;j<pri.akard.tamano();j++)
                    if(pri.akard.obtener(j).getOperacion() == 3) {
                        int cod = pri.akard.obtener(j).getProducto();
                        Producto p = pri.aprod.buscar(cod);
@@ -375,14 +375,14 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
                }
 
             if(datos.getRowCount() != 0)
-                JOptionPane.showMessageDialog(this,"¡Reporte realizado!");
+                JOptionPane.showMessageDialog(this,"ï¿½Reporte realizado!");
 
             else
-                JOptionPane.showMessageDialog(this,"¡No se han vendido productos "+
+                JOptionPane.showMessageDialog(this,"ï¿½No se han vendido productos "+
                         "en el rango de fechas especificado!");
            
         } else
-            JOptionPane.showMessageDialog(this,"¡El rango de fechas es incorrecto!");
+            JOptionPane.showMessageDialog(this,"ï¿½El rango de fechas es incorrecto!");
 
     }
 
@@ -393,7 +393,7 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
 
         while(cont < 2) {
 
-            for(int i=0;i<pri.akard.tamaño();i++) {
+            for(int i=0;i<pri.akard.tamano();i++) {
                 Kardex k = pri.akard.obtener(i);
                 if(k.getTipoperacion().equals(tiposoperacion[cont])) {
                     Object fila[] = new Object[6];
@@ -402,9 +402,9 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
                     switch(k.getOperacion()) {
                         case 0: fila[2] = "Registro";
                                 break;
-                        case 1: fila[2] = "Distribución";
+                        case 1: fila[2] = "Distribuciï¿½n";
                                 break;
-                        case 2: fila[2] = "Devolución";
+                        case 2: fila[2] = "Devoluciï¿½n";
                                 break;
                         default: fila[2] = "Venta";
                     }
@@ -421,7 +421,7 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
             cont++;
         }
 
-        JOptionPane.showMessageDialog(this,"¡Reporte realizado!");
+        JOptionPane.showMessageDialog(this,"ï¿½Reporte realizado!");
 
     }
 
@@ -430,12 +430,12 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
         //Ingreso de las partes de la fecha inicial
         int dini = cboDiaInicial.getSelectedIndex() + 1;
         int mini = cboMesInicial.getSelectedIndex() + 1;
-        int aini = cboAñoFinal.getSelectedIndex() + 2011;
+        int aini = cboAnoFinal.getSelectedIndex() + 2011;
 
         //Ingreso de las partes de la fecha final
         int dfin = cboDiaFinal.getSelectedIndex() + 1;
         int mfin = cboMesFinal.getSelectedIndex() + 1;
-        int afin = cboAñoFinal.getSelectedIndex() + 2011;
+        int afin = cboAnoFinal.getSelectedIndex() + 2011;
 
         Calendar c = Calendar.getInstance();
         c.set(aini,mini,dini);
@@ -455,18 +455,18 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
         //Ingreso de las partes de la fecha inicial
         int dini = cboDiaInicial.getSelectedIndex() + 1;
         int mini = cboMesInicial.getSelectedIndex() + 1;
-        int aini = cboAñoFinal.getSelectedIndex() + 2011;
+        int aini = cboAnoFinal.getSelectedIndex() + 2011;
 
         //Ingreso de las partes de la fecha final
         int dfin = cboDiaFinal.getSelectedIndex() + 1;
         int mfin = cboMesFinal.getSelectedIndex() + 1;
-        int afin = cboAñoFinal.getSelectedIndex() + 2011;
+        int afin = cboAnoFinal.getSelectedIndex() + 2011;
 
         //Obtenemos las partes de la fecha de la venta
         StringTokenizer st = new StringTokenizer(fecha,"/");
         int dia = Integer.parseInt(st.nextToken());
         int mes = Integer.parseInt(st.nextToken());
-        int año = Integer.parseInt(st.nextToken());
+        int ano = Integer.parseInt(st.nextToken());
 
         //Operacion
         long milis1,milis2,milis3;
@@ -475,7 +475,7 @@ public class PnlReportes extends JPanel implements ActionListener,ItemListener {
         milis1 = c.getTimeInMillis();
         c.set(afin,mfin,dfin);
         milis2 = c.getTimeInMillis();
-        c.set(año,mes,dia);
+        c.set(ano,mes,dia);
         milis3 = c.getTimeInMillis();
 
         if(milis3 >= milis1 && milis3 <= milis2)

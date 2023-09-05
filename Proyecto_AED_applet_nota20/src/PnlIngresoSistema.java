@@ -17,7 +17,7 @@ public class PnlIngresoSistema extends JPanel implements ActionListener {
 
     //Componenetes del panel
     JTextField txtUsuario;
-    JPasswordField pwfContraseña;
+    JPasswordField pwfContrasena;
     private JButton btnIngresar;
     private Principal pri;
 
@@ -37,15 +37,15 @@ public class PnlIngresoSistema extends JPanel implements ActionListener {
         txtUsuario.setBounds(400,300,110,20);
         add(txtUsuario);
 
-        JLabel lblContraseña = new JLabel("Contraseña",SwingConstants.LEFT);
-        lblContraseña.setBounds(290,350,100,20);
-        lblContraseña.setFont(new Font("seriff",Font.BOLD,16));
-        add(lblContraseña);
+        JLabel lblContrasena = new JLabel("Contrasena",SwingConstants.LEFT);
+        lblContrasena.setBounds(290,350,100,20);
+        lblContrasena.setFont(new Font("seriff",Font.BOLD,16));
+        add(lblContrasena);
 
-        pwfContraseña = new JPasswordField();
-        pwfContraseña.setBounds(400,350,110,20);
-        pwfContraseña.setEchoChar('*');
-        add(pwfContraseña);
+        pwfContrasena = new JPasswordField();
+        pwfContrasena.setBounds(400,350,110,20);
+        pwfContrasena.setEchoChar('*');
+        add(pwfContrasena);
 
         btnIngresar = new JButton("Ingresar");
         btnIngresar.setBounds(340,400,120,25);
@@ -61,18 +61,18 @@ public class PnlIngresoSistema extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
-        //Estructura que permite la validación de usuarios, comparando el user
-        //y el password. Además, determina el tipo de usuario que es para asi
+        //Estructura que permite la validaciï¿½n de usuarios, comparando el user
+        //y el password. Ademï¿½s, determina el tipo de usuario que es para asi
         //mostrar los componentes correspondientes.
 
         int user = getUsuario();
-        String pass = getContraseña();
+        String pass = getContrasena();
         int cont = 0;
 
         if(user != -1) {
-            for(int i=0;i<pri.aemp.tamaño();i++)
+            for(int i=0;i<pri.aemp.tamano();i++)
                 if(pri.aemp.obtener(i).getCodigo() == user)
-                    if(pri.aemp.obtener(i).getContraseña().equals(pass)) {
+                    if(pri.aemp.obtener(i).getContrasena().equals(pass)) {
                         cont++;
 
                         switch(pri.aemp.obtener(i).getTipo()) {
@@ -102,7 +102,7 @@ public class PnlIngresoSistema extends JPanel implements ActionListener {
 
                         setVisible(false);
                         pri.tbrHerramientas.setVisible(true);
-                        JOptionPane.showMessageDialog(pri,"¡Bienvenido "+
+                        JOptionPane.showMessageDialog(pri,"ï¿½Bienvenido "+
                                 pri.aemp.obtener(i).getNombres()+" "+
                                 pri.aemp.obtener(i).getApellidos()+"!");
 
@@ -110,13 +110,13 @@ public class PnlIngresoSistema extends JPanel implements ActionListener {
         }
 
         if(cont == 0)
-            JOptionPane.showMessageDialog(this,"¡Credenciales incorrectas!");
+            JOptionPane.showMessageDialog(this,"ï¿½Credenciales incorrectas!");
 
     }
 
-    private String getContraseña() {
+    private String getContrasena() {
         StringBuffer sb = new StringBuffer("");
-        char caracteres[] = pwfContraseña.getPassword();
+        char caracteres[] = pwfContrasena.getPassword();
 
         for(char c : caracteres)
             sb.append(c);

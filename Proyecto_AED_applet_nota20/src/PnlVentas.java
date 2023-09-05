@@ -49,7 +49,7 @@ public class PnlVentas extends JPanel implements ActionListener,ItemListener {
 
         pri = p;
 
-        JLabel lblCodigoTiend = new JLabel("Código",SwingConstants.LEFT);
+        JLabel lblCodigoTiend = new JLabel("Cï¿½digo",SwingConstants.LEFT);
         lblCodigoTiend.setBounds(30,40,90,20);
         add(lblCodigoTiend);
 
@@ -58,7 +58,7 @@ public class PnlVentas extends JPanel implements ActionListener,ItemListener {
         txtCodigotiend.setEditable(false);
         add(txtCodigotiend);
 
-        JLabel lblDescripcion = new JLabel("Descripción",SwingConstants.LEFT);
+        JLabel lblDescripcion = new JLabel("Descripciï¿½n",SwingConstants.LEFT);
         lblDescripcion.setBounds(30,70,90,20);
         add(lblDescripcion);
 
@@ -72,7 +72,7 @@ public class PnlVentas extends JPanel implements ActionListener,ItemListener {
         lblFondo1.setBorder(new TitledBorder("Tienda"));
         add(lblFondo1);
 
-        JLabel lblCodigoEmp = new JLabel("Código",SwingConstants.LEFT);
+        JLabel lblCodigoEmp = new JLabel("Cï¿½digo",SwingConstants.LEFT);
         lblCodigoEmp.setBounds(30,130,90,20);
         add(lblCodigoEmp);
 
@@ -104,7 +104,7 @@ public class PnlVentas extends JPanel implements ActionListener,ItemListener {
         lblFondo2.setBorder(new TitledBorder("Empleado"));
         add(lblFondo2);
 
-        JLabel lblCategoria = new JLabel("Categoría",SwingConstants.LEFT);
+        JLabel lblCategoria = new JLabel("Categorï¿½a",SwingConstants.LEFT);
         lblCategoria.setBounds(45,250,80,20);
         add(lblCategoria);
 
@@ -146,7 +146,7 @@ public class PnlVentas extends JPanel implements ActionListener,ItemListener {
 
         datos = new DefaultTableModel();
         datos.addColumn("Producto");
-        datos.addColumn("Descripción");
+        datos.addColumn("Descripciï¿½n");
         datos.addColumn("Precio");
         datos.addColumn("Cantidad");
         datos.addColumn("SubTotal");
@@ -217,7 +217,7 @@ public class PnlVentas extends JPanel implements ActionListener,ItemListener {
             int cat = Integer.parseInt(cboCategorias.getSelectedItem().toString());
             int tiend = Integer.parseInt(txtCodigotiend.getText());
 
-            for(int i=0;i<pri.aproti.tamaño();i++)
+            for(int i=0;i<pri.aproti.tamano();i++)
                 if(pri.aproti.obtener(i).getTienda() == tiend) {
                     Producto p = pri.aprod.buscar(pri.aproti.obtener(i).getProducto());
                     if(p.getCategoria() == cat)
@@ -245,10 +245,10 @@ public class PnlVentas extends JPanel implements ActionListener,ItemListener {
     private void agregarProducto() {
 
         if(lstProductos.getSelectedValue() == null)
-            JOptionPane.showMessageDialog(this,"¡Seleccione un producto!");
+            JOptionPane.showMessageDialog(this,"ï¿½Seleccione un producto!");
 
         else if(getCantidad() < 1)
-            JOptionPane.showMessageDialog(this,"¡Cantidad incorrecta!");
+            JOptionPane.showMessageDialog(this,"ï¿½Cantidad incorrecta!");
 
         else {
             int cant = Integer.parseInt(txtCantidad.getText());
@@ -259,9 +259,9 @@ public class PnlVentas extends JPanel implements ActionListener,ItemListener {
 
             if(cant > pt.getStock())
                 switch(pt.getStock()) {
-                    case 0: JOptionPane.showMessageDialog(this,"¡Producto agotado!");
+                    case 0: JOptionPane.showMessageDialog(this,"ï¿½Producto agotado!");
                             break;
-                    default: JOptionPane.showMessageDialog(this,"¡Solo hay "+
+                    default: JOptionPane.showMessageDialog(this,"ï¿½Solo hay "+
                             pt.getStock()+" prendas de este tipo en la tienda!");
 
                 }
@@ -330,10 +330,10 @@ public class PnlVentas extends JPanel implements ActionListener,ItemListener {
             //Restaura el modulo para otra venta
             restaurar();
 
-            JOptionPane.showMessageDialog(this,"¡Venta realizada!");
+            JOptionPane.showMessageDialog(this,"ï¿½Venta realizada!");
             
         } else
-            JOptionPane.showMessageDialog(this,"¡Agregue productos a la venta!");
+            JOptionPane.showMessageDialog(this,"ï¿½Agregue productos a la venta!");
 
     }
 

@@ -36,7 +36,7 @@ public class PnlMantenTiendas extends JPanel implements ActionListener,
 
         pri = p;
 
-        JLabel lblCodigo = new JLabel("Código",SwingConstants.LEFT);
+        JLabel lblCodigo = new JLabel("Cï¿½digo",SwingConstants.LEFT);
 	lblCodigo.setBounds(40,20,90,20);
 	add(lblCodigo);
 
@@ -45,7 +45,7 @@ public class PnlMantenTiendas extends JPanel implements ActionListener,
 	txtCodigo.setEditable(false);
 	add(txtCodigo);
 
-	JLabel lblDescripcion = new JLabel("Descripción",SwingConstants.LEFT);
+	JLabel lblDescripcion = new JLabel("Descripciï¿½n",SwingConstants.LEFT);
 	lblDescripcion.setBounds(40,50,90,20);
 	add(lblDescripcion);
 
@@ -62,8 +62,8 @@ public class PnlMantenTiendas extends JPanel implements ActionListener,
         add(txtCapcidad);
 
         datos = new DefaultTableModel();
-	datos.addColumn("Código");
-	datos.addColumn("Descripción");
+	datos.addColumn("Cï¿½digo");
+	datos.addColumn("Descripciï¿½n");
 	datos.addColumn("Capacidad");
 	datos.addColumn("Cantidad Prendas");
 
@@ -73,7 +73,7 @@ public class PnlMantenTiendas extends JPanel implements ActionListener,
 	scpScroll1.setBounds(40,130,720,200);
 	add(scpScroll1);
 
-	JLabel lblOperacion = new JLabel("Operación",SwingConstants.LEFT);
+	JLabel lblOperacion = new JLabel("Operaciï¿½n",SwingConstants.LEFT);
 	lblOperacion.setBounds(570,20,80,20);
 	add(lblOperacion);
 
@@ -101,7 +101,7 @@ public class PnlMantenTiendas extends JPanel implements ActionListener,
     public void actionPerformed(ActionEvent e) {
 
         switch(cboOperacion.getSelectedIndex()) {
-            case 0: JOptionPane.showMessageDialog(this,"¡Seleccione una operación!");
+            case 0: JOptionPane.showMessageDialog(this,"ï¿½Seleccione una operaciï¿½n!");
                     break;
             case 1: registrar();
                     break;
@@ -139,7 +139,7 @@ public class PnlMantenTiendas extends JPanel implements ActionListener,
         int capac = Integer.parseInt(txtCapcidad.getText());
 
         pri.atien.ingresar(new Tienda(cod,descrip,capac,0));
-        JOptionPane.showMessageDialog(this,"¡Ingreso realizado!");
+        JOptionPane.showMessageDialog(this,"ï¿½Ingreso realizado!");
         listar();
         cboOperacion.setSelectedIndex(0);
         pri.atien.guardar();
@@ -153,16 +153,16 @@ public class PnlMantenTiendas extends JPanel implements ActionListener,
 
         if(t != null) {
             txtS.setText("******* RESULTADO DE LA CONSULTA *******\n\n");
-            txtS.append(" Código: "+t.getCodigo()+"\n");
-            txtS.append(" Descripción: "+t.getDescripcion()+"\n");
+            txtS.append(" Cï¿½digo: "+t.getCodigo()+"\n");
+            txtS.append(" Descripciï¿½n: "+t.getDescripcion()+"\n");
             txtS.append(" Capacidad: "+t.getCapacidad()+"\n");
             txtS.append(" Cantidad de prendas: "+t.getOcupado());
 
-            JOptionPane.showMessageDialog(this,"¡Consulta realizada!");
+            JOptionPane.showMessageDialog(this,"ï¿½Consulta realizada!");
             cboOperacion.setSelectedIndex(0);
 
         } else
-            JOptionPane.showMessageDialog(this,"¡El código no existe!");
+            JOptionPane.showMessageDialog(this,"ï¿½El cï¿½digo no existe!");
 
     }
 
@@ -177,13 +177,13 @@ public class PnlMantenTiendas extends JPanel implements ActionListener,
 
             t.setDescripcion(descrip);
             t.setCapacidad(capac);
-            JOptionPane.showMessageDialog(this,"¡Modificación realizada!");
+            JOptionPane.showMessageDialog(this,"ï¿½Modificaciï¿½n realizada!");
             listar();
             cboOperacion.setSelectedIndex(0);
             pri.atien.guardar();
 
         } else
-            JOptionPane.showMessageDialog(this,"¡El código no existe!");
+            JOptionPane.showMessageDialog(this,"ï¿½El cï¿½digo no existe!");
 
     }
 
@@ -192,7 +192,7 @@ public class PnlMantenTiendas extends JPanel implements ActionListener,
         while(datos.getRowCount() > 0)
             datos.removeRow(0);
 
-        for(int i=0;i<pri.atien.tamaño();i++) {
+        for(int i=0;i<pri.atien.tamano();i++) {
             Object fila[] = new Object[4];
             Tienda t = pri.atien.obtener(i);
 

@@ -38,7 +38,7 @@ public class PnlMantenProd extends JPanel implements ActionListener,
 
         pri = p;
 
-	JLabel lblCodigo = new JLabel("Código",SwingConstants.LEFT);
+	JLabel lblCodigo = new JLabel("Cï¿½digo",SwingConstants.LEFT);
 	lblCodigo.setBounds(40,20,90,20);
 	add(lblCodigo);
 
@@ -47,7 +47,7 @@ public class PnlMantenProd extends JPanel implements ActionListener,
 	txtCodigo.setEditable(false);
 	add(txtCodigo);
 
-	JLabel lblDescripcion = new JLabel("Descripción",SwingConstants.LEFT);
+	JLabel lblDescripcion = new JLabel("Descripciï¿½n",SwingConstants.LEFT);
 	lblDescripcion.setBounds(40,50,90,20);
 	add(lblDescripcion);
 
@@ -55,7 +55,7 @@ public class PnlMantenProd extends JPanel implements ActionListener,
 	txtDescripcion.setBounds(140,50,250,20);
 	add(txtDescripcion);
 
-	JLabel lblCategoria = new JLabel("Categoría",SwingConstants.LEFT);
+	JLabel lblCategoria = new JLabel("Categorï¿½a",SwingConstants.LEFT);
 	lblCategoria.setBounds(40,80,90,20);
 	add(lblCategoria);
 
@@ -80,9 +80,9 @@ public class PnlMantenProd extends JPanel implements ActionListener,
 	add(txtMarca);
 
 	datos = new DefaultTableModel();
-	datos.addColumn("Código");
-	datos.addColumn("Descripción");
-	datos.addColumn("Categoría");
+	datos.addColumn("Cï¿½digo");
+	datos.addColumn("Descripciï¿½n");
+	datos.addColumn("Categorï¿½a");
 	datos.addColumn("Precio");
 	datos.addColumn("Marca");
 
@@ -92,7 +92,7 @@ public class PnlMantenProd extends JPanel implements ActionListener,
 	scpScroll1.setBounds(40,190,720,150);
 	add(scpScroll1);
 
-	JLabel lblOperacion = new JLabel("Operación",SwingConstants.LEFT);
+	JLabel lblOperacion = new JLabel("Operaciï¿½n",SwingConstants.LEFT);
 	lblOperacion.setBounds(570,20,80,20);
 	add(lblOperacion);
 
@@ -143,7 +143,7 @@ public class PnlMantenProd extends JPanel implements ActionListener,
     public void actionPerformed(ActionEvent e) {
 
         switch(cboOperacion.getSelectedIndex()) {
-            case 0: JOptionPane.showMessageDialog(this,"¡Seleccione una operación!");
+            case 0: JOptionPane.showMessageDialog(this,"ï¿½Seleccione una operaciï¿½n!");
                     break;
             case 1: registrar();
                     break;
@@ -167,7 +167,7 @@ public class PnlMantenProd extends JPanel implements ActionListener,
         String marc = txtMarca.getText();
 
         pri.aprod.ingresar(new Producto(cod,descrip,cat,pre,marc));
-        JOptionPane.showMessageDialog(this,"¡Ingreso realizado!");
+        JOptionPane.showMessageDialog(this,"ï¿½Ingreso realizado!");
         listar();
         cboOperacion.setSelectedIndex(0);
         pri.aprod.guardar();
@@ -182,17 +182,17 @@ public class PnlMantenProd extends JPanel implements ActionListener,
 
         if(p != null) {
             txtS.setText("****** RESULTADO DE LA CONSULTA ******\n\n");
-            txtS.append("Código: "+p.getCodigo()+"\n");
-            txtS.append("Descripción: "+p.getDescripcion()+"\n");
-            txtS.append("Categoría: "+p.getCategoria()+"\n");
+            txtS.append("Cï¿½digo: "+p.getCodigo()+"\n");
+            txtS.append("Descripciï¿½n: "+p.getDescripcion()+"\n");
+            txtS.append("Categorï¿½a: "+p.getCategoria()+"\n");
             txtS.append("Precio: "+p.getPrecio()+"\n");
             txtS.append("Marca: "+p.getMarca());
 
-            JOptionPane.showMessageDialog(this,"¡Consulta realizada!");
+            JOptionPane.showMessageDialog(this,"ï¿½Consulta realizada!");
             cboOperacion.setSelectedIndex(0);
 
         } else
-            JOptionPane.showMessageDialog(this,"¡El código no existe!");
+            JOptionPane.showMessageDialog(this,"ï¿½El cï¿½digo no existe!");
 
     }
 
@@ -213,13 +213,13 @@ public class PnlMantenProd extends JPanel implements ActionListener,
             p.setPrecio(pre);
             p.setMarca(marc);
 
-            JOptionPane.showMessageDialog(this,"Modificación realizada");
+            JOptionPane.showMessageDialog(this,"Modificaciï¿½n realizada");
             listar();
             cboOperacion.setSelectedIndex(0);
             pri.aprod.guardar();
 
         } else
-            JOptionPane.showMessageDialog(this,"¡El código no existe!");
+            JOptionPane.showMessageDialog(this,"ï¿½El cï¿½digo no existe!");
 
     }
 
@@ -229,11 +229,11 @@ public class PnlMantenProd extends JPanel implements ActionListener,
         int pos = -1;
         int cod = Integer.parseInt(txtCodigo.getText());
 
-        for(int i=0;i<pri.aprod.tamaño();i++) {
+        for(int i=0;i<pri.aprod.tamano();i++) {
             Producto p = pri.aprod.obtener(i);
             if(p.getCodigo() == cod) {
                 pri.aprod.eliminar(i);
-                JOptionPane.showMessageDialog(this,"¡Eliminación realizada!");
+                JOptionPane.showMessageDialog(this,"ï¿½Eliminaciï¿½n realizada!");
                 listar();
                 pos = i;
                 cboOperacion.setSelectedIndex(0);
@@ -245,7 +245,7 @@ public class PnlMantenProd extends JPanel implements ActionListener,
         }
 
 	if(pos == -1)
-            JOptionPane.showMessageDialog(this,"¡El código no existe!");
+            JOptionPane.showMessageDialog(this,"ï¿½El cï¿½digo no existe!");
 
     }
 
@@ -255,7 +255,7 @@ public class PnlMantenProd extends JPanel implements ActionListener,
 	while(datos.getRowCount() > 0)
             datos.removeRow(0);
 
-        for(int i=0;i<pri.aprod.tamaño();i++) {
+        for(int i=0;i<pri.aprod.tamano();i++) {
             Object fila[] = new Object[5];
             Producto p = pri.aprod.obtener(i);
 
